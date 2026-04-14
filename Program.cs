@@ -15,12 +15,12 @@ class Program
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("Welcome to _ !");
+            Console.WriteLine("Welcome to Forgotten Descent!");
             Console.WriteLine("");
             Console.WriteLine("1) Play ");
             Console.WriteLine("2) About ");
             Console.WriteLine("3) Exit ");
-            Console.Write("Choose an option: ");
+            Console.Write("Choose an option: (1-3) ");
 
             if (!int.TryParse(Console.ReadLine(), out int menuChoice))
             {
@@ -28,7 +28,6 @@ class Program
                 Console.ReadKey();
                 continue;
             }
-
             if (menuChoice == 1)
             {
                 Console.Clear();
@@ -159,20 +158,23 @@ class Program
                 Console.WriteLine("You have no idea how you ended up here...");
                 Console.ReadKey();
 
-                bool goToUpperDungeon = false;
-
                 while (true)
                 {
                     Console.Clear();
-                    Console.WriteLine("What will you do?");
+                    Console.WriteLine("You rise to your feet. What is your next move?");
                     Console.WriteLine("");
                     Console.WriteLine("1) Call for help");
                     Console.WriteLine("2) Inspect prison cell");
                     Console.WriteLine("3) Peer through the cell bars");
                     Console.WriteLine("4) Rest");
                     Console.WriteLine("");
-                    Console.Write("Choice: ");
-                    int dungeonCellChoice = int.Parse(Console.ReadLine());
+                    Console.Write("Choose an option: (1-4) ");
+                    if (!int.TryParse(Console.ReadLine(), out int dungeonCellChoice))
+                    {
+                        Console.WriteLine("Invalid input. Press any key and try again.");
+                        Console.ReadKey();
+                        continue;
+                    }
 
                     if (dungeonCellChoice == 1)
                     {
@@ -194,14 +196,22 @@ class Program
 
                         Console.WriteLine("You inspect the prison door. You push against it, but it won't budge — it's locked tight.");
                         Console.WriteLine("Closer inspection reveals heavily rusted hinges and an old, fragile-looking lock.");
-                        Console.WriteLine("'If I kick this door hard enough... I might be able to break it open,' you think to yourself.");
+                        Console.WriteLine("'If I kick this door hard enough... I might be able to break it open.' you think to yourself.");
                         Console.WriteLine("");
 
-                        Console.WriteLine("Do you try to kick the door open? [Y]es / [N]o");
+                        Console.WriteLine("Do you try to kick the door open?");
+                        Console.WriteLine("1) Yes");
+                        Console.WriteLine("2) No");
+                        Console.Write("Choose an option: (1-2) ");
 
-                        string kickDoorChoice = Console.ReadLine();
+                        if (!int.TryParse(Console.ReadLine(), out int kickDoorChoice))
+                        {
+                            Console.WriteLine("Invalid input. Press any key and try again.");
+                            Console.ReadKey();
+                            continue;
+                        }
 
-                        if (kickDoorChoice == "Y")
+                        if (kickDoorChoice == 1)
                         {
                             Console.Clear();
                             Console.WriteLine("You take a step back and prepare to kick the door with all your strength.");
@@ -213,7 +223,7 @@ class Program
                             Console.ReadKey();
 
                         }
-                        else if (kickDoorChoice == "N")
+                        else if (kickDoorChoice == 2)
                         {
                             Console.Clear();
                             Console.WriteLine("'What's the use..' you mutter to yourself. You consider your other options again.");
@@ -232,11 +242,18 @@ class Program
                         Console.WriteLine("");
                         Console.WriteLine("Do you want to investigate it, or make your escape?");
                         Console.WriteLine("");
-                        Console.Write("[I] Inspect  |  [E] Escape: ");
+                        Console.WriteLine("1) Inspect");
+                        Console.WriteLine("2) Escape");
+                        Console.Write("Choose an option: (1-2) ");
 
-                        string inspectChoice = Console.ReadLine();
+                        if (!int.TryParse(Console.ReadLine(), out int inspectChoice))
+                        {
+                            Console.WriteLine("Invalid input. Press any key and try again.");
+                            Console.ReadKey();
+                            continue;
+                        }
 
-                        if (inspectChoice == "I")
+                        if (inspectChoice == 1)
                         {
                             Console.Clear();
                             Console.WriteLine("You slowly approach the corner of the room.");
@@ -248,20 +265,26 @@ class Program
                             Console.WriteLine("The smell is overwhelming. Your stomach turns as you fight the urge to gag.");
                             Console.WriteLine("Do you risk getting closer to take the sword, or leave it and escape?");
                             Console.WriteLine("");
-                            Console.Write("[S] Take the sword  |  [E] Escape: ");
+                            Console.WriteLine("1) Take the sword");
+                            Console.WriteLine("2) Escape");
+                            Console.Write("Choose an option: (1-2) ");
 
-                            string inspectChoiceSword = Console.ReadLine();
+                            if (!int.TryParse(Console.ReadLine(), out int inspectChoiceSword))
+                            {
+                                Console.WriteLine("Invalid input. Press any key and try again.");
+                                Console.ReadKey();
+                                continue;
+                            }
 
-                            if (inspectChoiceSword == "E")
+                            if (inspectChoiceSword == 2)
                             {
                                 Console.Clear();
                                 Console.WriteLine("Disgusted by the smell, you decided to head up the staircase instead.");
                                 Console.ReadKey();
-                                goToUpperDungeon = true;
                                 break;
 
                             }
-                            else if (inspectChoiceSword == "S")
+                            else if (inspectChoiceSword == 1)
                             {
                                 Console.Clear();
                                 Console.WriteLine("You hold your breath and step closer, gripping the sword to pull it free.");
@@ -282,27 +305,17 @@ class Program
                                 Console.Clear();
                                 Console.WriteLine("With the sword now in your grip, you move toward the stairs, a small sense of confidence returning.");
                                 Console.ReadKey();
-                                goToUpperDungeon = true;
                                 break;
                             }
 
                         }
-                        else if (inspectChoice == "E")
+                        else if (inspectChoice == 2)
                         {
                             Console.Clear();
                             Console.WriteLine("Disgusted by the smell, you decided to head up the staircase instead.");
                             Console.ReadKey();
-                            goToUpperDungeon = true;
                             break;
                         }
-                        else
-                        {
-                            Console.Clear();
-                            Console.WriteLine("Invalid option. Press any key to try again.");
-                            Console.ReadKey();
-                        }
-
-
                     }
                     else if (dungeonCellChoice == 3)
                     {
@@ -333,7 +346,10 @@ class Program
                 Console.WriteLine("=== About this game ===");
                 Console.WriteLine("");
                 Console.WriteLine("This is a text-based RPG built in C# as a personal learning project.");
-                Console.WriteLine("The goal is to develop an understanding of programming.");
+                Console.WriteLine("The goal is to develop an understanding of programming in C#.");
+                Console.WriteLine("");
+                Console.WriteLine("You start in a dungeon with no memory of how you got there.");
+                Console.WriteLine("You create a character, assign stats, and your choices affect how the story plays out.");
                 Console.WriteLine("");
                 Console.WriteLine("Press any key to exit.");
                 Console.ReadKey();
@@ -342,11 +358,6 @@ class Program
             else if (menuChoice == 3)
             {
                 break;
-            }
-            else
-            {
-                Console.WriteLine("Invalid choice. Press any key and try again.");
-                Console.ReadKey();
             }
         }
     }
