@@ -354,16 +354,19 @@ class Program
     static void UpperDungeon(Player player)
     {
         Console.Clear();
-        Console.WriteLine("You silently climb the stairs, listening closely for any movement above.");
-        Console.WriteLine("At the very last steps of the stairs, you manage to see a silhouette of someone beyond this dark room");
+        Console.WriteLine("You silently ascend the stairs, straining your ears for any sign of movement above.");
+        Console.WriteLine("At the final steps, a faint silhouette comes into view—someone standing in the dark chamber beyond.");
         Console.WriteLine();
-        Console.WriteLine("You spot an open door to the left leading outside, but this enemy faced away from you is inbetween you and your escape.");
+        Console.WriteLine("To your left, you notice an open doorway leading outside. Freedom.");
+        Console.WriteLine("But the figure, still unaware of your presence, stands between you and your escape.");
+        Console.WriteLine();
         Console.WriteLine("What will you do?");
         Console.WriteLine();
-        Console.WriteLine("1) Charge towards the figure");
-        Console.WriteLine("2) Attempt to sneak behind for a stealth attack");
-        Console.WriteLine("3) Distract the enemy and escape");
+        Console.WriteLine("1) Charge at the figure head-on");
+        Console.WriteLine("2) Slip behind them and attempt a stealth attack");
+        Console.WriteLine("3) Create a distraction and slip past to escape");
         Console.Write("Choice: ");
+
         int UpperDungeonChoice = int.Parse(Console.ReadLine());
 
 
