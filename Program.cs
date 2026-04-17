@@ -1,13 +1,13 @@
-﻿class Player
+﻿class Player  // En ritning för objekt. Klassen beskriver struktur och beteende. 
 {
-    public string Name;
+    public string Name;    //  Olika fält som lagrar karaktärens namn, stats, skillpoints etc
     public int Health;
     public int Attack;
     public int Defence;
     public int SkillPoints;
     public int playerClass;
 
-    public void ShowStats()
+    public void ShowStats() // En metod för att visa stats in-game
     {
         Console.WriteLine($"Health: {Health}");
         Console.WriteLine($"Attack: {Attack}");
@@ -15,10 +15,11 @@
     }
 }
 
-class Program
+class Program // 
 {
-    static void GameMenu()
+    static void GameMenu() // Metod för meny switch (loop med val)
     {
+        Console.BackgroundColor = ConsoleColor.Black;
         Console.WriteLine("Welcome to Forgotten Descent!");
         Console.WriteLine();
         Console.WriteLine("1) Play ");
@@ -27,12 +28,11 @@ class Program
         Console.Write("Choose an option: (1-3) ");
     }
 
-    static Player PlayerCreation()
+
+    static Player PlayerCreation() // Startpunkt för character creation
     {
         Console.Clear();
         Player player = new Player();
-
-        //Player stats
 
         player.Health = 30;
         player.Attack = 1;
@@ -78,7 +78,9 @@ class Program
             Console.WriteLine();
             Console.WriteLine("To increase your stats write [H] for Health, [A] for Attack or [D] for Defence.");
             Console.Write("Choose stat to increase: ");
-            string statPointChoice = Console.ReadLine();
+            string statPointChoice = Console.ReadLine().ToUpper();
+
+            // TODO: Skapa fler klasser beroende på stat choice
 
             if (statPointChoice == "A")
             {
@@ -134,6 +136,7 @@ class Program
             Console.WriteLine();
             Console.WriteLine("Press any key to start your adventure.");
             Console.ReadKey();
+            return player;
         }
         else if (player.Health >= 90)
         {
@@ -167,8 +170,9 @@ class Program
         return player;
 
     }
-    static void DungeonCell(Player player)
+    static void DungeonCell(Player player)  // Startpunkt för första delen
     {
+        // Skapa mer narrativ för miljö
         Console.Clear();
         Console.WriteLine("You wake up dazed and confused. You slowly open your eyes and realize you're in a dungeon prison cell.");
         Console.WriteLine();
@@ -351,7 +355,7 @@ class Program
         }
     }
 
-    static void UpperDungeon(Player player)
+    static void UpperDungeon(Player player)   //Startpunkt för andra delen
     {
         Console.Clear();
         Console.WriteLine("You silently ascend the stairs, straining your ears for any sign of movement above.");
@@ -367,13 +371,17 @@ class Program
         Console.WriteLine("3) Create a distraction and slip past to escape");
         Console.Write("Choice: ");
 
-        int UpperDungeonChoice = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int kickDoorChoice))
+        {
+            Console.WriteLine("Invalid input. Press any key and try again.");
+            Console.ReadKey();
+        }
 
 
         Console.ReadKey();
     }
-    // Initialization
-    static void Main(string[] args)
+
+    static void Main(string[] args) // Initialization. Här börjar programmet köra. 
     {
         while (true)
         {
