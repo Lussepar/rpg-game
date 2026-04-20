@@ -7,7 +7,7 @@
     public int SkillPoints;
     public int playerClass;
 
-    public void ShowStats() // En metod för att visa stats in-game
+    public void ShowStats() // En metod för att visa stats in-game  TODO: Lägg till val att visa stats i alla delar av spelet
     {
         Console.WriteLine($"Health: {Health}");
         Console.WriteLine($"Attack: {Attack}");
@@ -370,12 +370,23 @@ class Program // Klassen beskriver struktur och beteende för spelet
         Console.WriteLine("3) Create a distraction and slip past to escape");
         Console.Write("Choice: ");
 
-        if (!int.TryParse(Console.ReadLine(), out int kickDoorChoice))
+        if (!int.TryParse(Console.ReadLine(), out int upperDungeonChoice))
         {
             Console.WriteLine("Invalid input. Press any key and try again.");
             Console.ReadKey();
         }
-
+        else if (upperDungeonChoice == 1)
+        {
+            Console.WriteLine("You figure a surprise attack is the best option to maybe catch the enemy off guard.");
+        }
+        else if (upperDungeonChoice == 2)
+        {
+            Console.WriteLine("You silently sneak behind the enemy and strike him with your sword.");
+        }
+        else if (upperDungeonChoice == 3)
+        {
+            Console.WriteLine("You pick up a rock and successfully distract the enemy and start running for the exit");
+        }
 
         Console.ReadKey();
     }
