@@ -1,4 +1,4 @@
-﻿class Player  // En ritning för objekt. Klassen beskriver struktur och beteende. 
+﻿class Player  // En ritning för objekt. Klassen beskriver struktur och beteende.    TODO: Skapa class för fiende. Lära sig hur man skapar ett battle-system
 {
     public string Name;    //  Olika fält som lagrar karaktärens namn, stats, skillpoints etc
     public int Health;
@@ -15,9 +15,9 @@
     }
 }
 
-class Program // 
+class Program // Klassen beskriver struktur och beteende för spelet
 {
-    static void GameMenu() // Metod för meny switch (loop med val)
+    static void GameMenu() // Metod för meny switch (loop med val)    TODO: Skapa ASCII-styled meny
     {
         Console.BackgroundColor = ConsoleColor.Black;
         Console.WriteLine("Welcome to Forgotten Descent!");
@@ -29,7 +29,7 @@ class Program //
     }
 
 
-    static Player PlayerCreation() // Startpunkt för character creation
+    static Player PlayerCreation() // Startpunkt för character creation     TODO: Skapa fler klasser beroende på stat choice
     {
         Console.Clear();
         Player player = new Player();
@@ -79,8 +79,6 @@ class Program //
             Console.WriteLine("To increase your stats write [H] for Health, [A] for Attack or [D] for Defence.");
             Console.Write("Choose stat to increase: ");
             string statPointChoice = Console.ReadLine().ToUpper();
-
-            // TODO: Skapa fler klasser beroende på stat choice
 
             if (statPointChoice == "A")
             {
@@ -151,6 +149,7 @@ class Program //
             Console.WriteLine();
             Console.WriteLine("Press any key to start your adventure.");
             Console.ReadKey();
+            return player;
         }
         else
         {
@@ -170,9 +169,8 @@ class Program //
         return player;
 
     }
-    static void DungeonCell(Player player)  // Startpunkt för första delen
+    static void DungeonCell(Player player)  // Startpunkt för första delen    TODO: Skapa mer narrativ för miljön
     {
-        // Skapa mer narrativ för miljö
         Console.Clear();
         Console.WriteLine("You wake up dazed and confused. You slowly open your eyes and realize you're in a dungeon prison cell.");
         Console.WriteLine();
@@ -331,7 +329,8 @@ class Program //
                     Console.Clear();
                     Console.WriteLine("Disgusted by the smell, you decided to head up the staircase instead.");
                     Console.ReadKey();
-                    break;
+                    UpperDungeon(player);
+                    return;
                 }
             }
             else if (dungeonCellChoice == 3)
@@ -355,7 +354,7 @@ class Program //
         }
     }
 
-    static void UpperDungeon(Player player)   //Startpunkt för andra delen
+    static void UpperDungeon(Player player)   //Startpunkt för andra delen   TODO: Skapa battle system, narrativ för de olika valen
     {
         Console.Clear();
         Console.WriteLine("You silently ascend the stairs, straining your ears for any sign of movement above.");
@@ -381,7 +380,7 @@ class Program //
         Console.ReadKey();
     }
 
-    static void Main(string[] args) // Initialization. Här börjar programmet köra. 
+    static void Main(string[] args) // Initialization. Här börjar programmet köra.  TODO: Skapa fler metoder som GameMenu()
     {
         while (true)
         {
